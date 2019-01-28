@@ -11,7 +11,7 @@
 ❯ yarn
 ```
 
-##  🕹️ Usage
+## 🕹️ Usage
 
 ### Parse all issues and index them into algolia
 
@@ -19,3 +19,7 @@
 # defining .env file with ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY
 ❯ make parse
 ```
+
+## 🌱 Inspiration - deep dive reading
+
+* [Newsletters, Podcasts, Indie news... to feed my brain](https://github.com/92bondstreet/brain-food)

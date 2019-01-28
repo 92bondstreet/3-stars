@@ -1,7 +1,7 @@
 {
-  "name": "brazier",
+  "name": "3-stars",
   "version": "0.0.1",
-  "description": "Brazier - brain food - first woman to earn three Michelin stars",
+  "description": "3 stars brain food",
   "main": "index.js",
   "author": "Yassine AZZOUT <yassine.azzout@gmail.com>",
   "license": "Uncopyrighted",
@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.2",
     "chrono-node": "^1.3.5",
     "dotenv": "^6.2.0",
+    "moment": "^2.24.0",
     "node-fetch": "^2.3.0",
     "p-limit": "^2.1.0",
     "p-settle": "^2.1.0",

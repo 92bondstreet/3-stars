@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const parseDomain = require('parse-domain');
 const pLimit = require('p-limit');
 const pSettle = require('p-settle');
-const {P_LIMIT, SWLW} = require('../constants');
+const {P_LIMIT, SOURCE_SWLW} = require('../constants');
 const uuidv5 = require('uuid/v5');
 
 /**
@@ -13,7 +13,7 @@ const uuidv5 = require('uuid/v5');
  */
 const getLatestIssue = async () => {
   try {
-    const response = await fetch(SWLW);
+    const response = await fetch(SOURCE_SWLW);
     const body = await response.text();
 
     const $ = cheerio.load(body);
@@ -46,14 +46,14 @@ const getSnippet = ($, element) => {
 };
 
 /**
- * Get the year of yhe issue
+ * Get date of the issue
  * @param  {Object} element
  * @return {String}
  */
-const getYear = element => {
+const getDate = element => {
   const date = chrono.parseDate(element.text());
 
-  return new Date(date).getFullYear();
+  return new Date(date);
 };
 
 /**
@@ -63,24 +63,24 @@ const getYear = element => {
  */
 const parse = async issue => {
   try {
-    const source = `${SWLW}/issues/${issue}`;
+    const source = `${SOURCE_SWLW}/issues/${issue}`;
     const response = await fetch(source);
     const body = await response.text();
     const $ = cheerio.load(body);
-    const year = getYear($('.sub-header-text span'));
-    const {domain} = parseDomain(SWLW);
+    const date = getDate($('.sub-header-text span'));
+    const {domain} = parseDomain(SOURCE_SWLW);
 
     return $('.post_title').map((i, element) => {
       const url = $(element).attr('href');
       const objectID = uuidv5(url, uuidv5.URL);
 
       return {
+        date,
         domain,
         issue,
         objectID,
         source,
         url,
-        year,
         'title': $(element).text(),
         'tldr': getSnippet($, element),
         'type': 'newsletter'
