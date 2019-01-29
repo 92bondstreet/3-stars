@@ -9,5 +9,6 @@ module.exports = {
   'P_LIMIT': 25,
   'SOURCE_KNOWYOURTEAM': 'https://knowyourteam.com/learn/newsletter',
   'SOURCE_SWLW': 'http://softwareleadweekly.com',
-  'SOURCE_THE_ENG_MAN': 'https://us16.campaign-archive.com/home/?u=a4bbe86af54004b4eb77337e3&id=7ee2bf8f4c'
+  'SOURCE_THE_ENG_MAN': 'https://us16.campaign-archive.com/home/?u=a4bbe86af54004b4eb77337e3&id=7ee2bf8f4c',
+  'SOURCE_LARA_HOGAN': 'https://us2.campaign-archive.com/home/?u=1f50ce22f02ed0ffc80c10aff&id=8c0f947e69'
 };
