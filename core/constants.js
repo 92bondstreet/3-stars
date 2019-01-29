@@ -7,6 +7,7 @@ module.exports = {
   ALGOLIA_APPLICATION_ID,
   ALGOLIA_API_KEY,
   'P_LIMIT': 25,
+  'SOURCE_CHANGELOG': 'http://changelog.com/podcast/feed',
   'SOURCE_GITPRIME': 'https://blog.gitprime.com/newsletter/page',
   'SOURCE_KNOWYOURTEAM': 'https://knowyourteam.com/learn/newsletter',
   'SOURCE_SYNTAX_FM': 'https://syntax.fm',
