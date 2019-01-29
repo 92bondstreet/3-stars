@@ -10,7 +10,7 @@ async function sandbox (source) {
     const posts = await core.browse();
 
     console.log(`${posts.length} posts found`);
-    console.log(posts[0]);
+    console.log(posts);
     console.log('done');
     process.exit(0);
   } catch (e) {
