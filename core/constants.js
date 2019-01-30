@@ -8,6 +8,7 @@ module.exports = {
   ALGOLIA_API_KEY,
   'P_LIMIT': 25,
   'SOURCE_CHANGELOG': 'http://changelog.com/podcast/feed',
+  'SOURCE_FARNAMSTREET': 'https://overcast.fm/itunes990149481/the-knowledge-project-with-shane-parrish',
   'SOURCE_GITPRIME': 'https://blog.gitprime.com/newsletter/page',
   'SOURCE_KNOWYOURTEAM': 'https://knowyourteam.com/learn/newsletter',
   'SOURCE_LARA_HOGAN': 'https://us2.campaign-archive.com/home/?u=1f50ce22f02ed0ffc80c10aff&id=8c0f947e69',
