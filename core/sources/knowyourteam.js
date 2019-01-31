@@ -1,5 +1,7 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
+const fetchVideoInfo = require('youtube-info');
+const {getDate, getYoutubeId} = require('../utils');
 const parseDomain = require('parse-domain');
 const pLimit = require('p-limit');
 const pSettle = require('p-settle');
@@ -7,6 +9,22 @@ const {P_LIMIT, SOURCE_KNOWYOURTEAM} = require('../constants');
 const uuidv5 = require('uuid/v5');
 
 const EXCLUDE = ['Transcript of the interview here'];
+
+/**
+ * Try to guess date based on published youtube video date
+ * @param  {String} youtube
+ * @return {Date}
+ */
+const guessDate = async youtube => {
+  try {
+    const id = getYoutubeId(youtube);
+    const video = await fetchVideoInfo(id);
+
+    return getDate(await video.datePublished);
+  } catch (error) {
+    return null;
+  }
+};
 
 /**
  * Get the last (and the current) issue
@@ -90,13 +108,13 @@ const parse = async issue => {
     const response = await fetch(source);
     const body = await response.text();
     const $ = cheerio.load(body);
-    const date = new Date();
     const {domain} = parseDomain(SOURCE_KNOWYOURTEAM);
 
     // First. Get interview
     // Then. Get post links
     const chat = getChat($);
     const posts = getPosts($);
+    const date = await guessDate($('.youtube').attr('src'));
 
     // Finally. Prepare the foods
     return [chat, ...posts].map(item => {

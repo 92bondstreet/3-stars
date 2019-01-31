@@ -7,7 +7,7 @@ const uuidv5 = require('uuid/v5');
 /**
  * Get date of the issue
  * @param  {Object} element
- * @return {String}
+ * @return {Date}
  */
 const getDate = module.exports.getDate = date => {
   return new Date(chrono.parseDate(date));
@@ -85,4 +85,20 @@ module.exports.rss = async source => {
     console.error(error);
     return [];
   }
+};
+
+/**
+ * Get the video youtube id
+ * @param  {String} src
+ * @return {String}
+ */
+module.exports.getYoutubeId = src => {
+  const re = new RegExp(/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/);
+  const matches = src.match(re);
+
+  if (matches) {
+    return matches[1];
+  }
+
+  return null;
 };
