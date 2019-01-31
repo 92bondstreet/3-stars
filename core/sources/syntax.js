@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
-const chrono = require('chrono-node');
 const fetch = require('node-fetch');
+const {getDate, getIssue} = require('../utils');
 const parseDomain = require('parse-domain');
 const pLimit = require('p-limit');
 const pSettle = require('p-settle');
@@ -29,33 +29,6 @@ const getEpisodes = async () => {
 };
 
 /**
- * Get date of the issue
- * @param  {Object} element
- * @return {String}
- */
-const getDate = element => {
-  const date = chrono.parseDate(element.text());
-
-  return new Date(date);
-};
-
-/**
- * Get issue number (episode number)
- * @param  {[type]} episode [description]
- * @return {[type]}         [description]
- */
-const getIssue = episode => {
-  const re = new RegExp(/show\/(\d+)/);
-  const matches = episode.match(re);
-
-  if (matches) {
-    return + matches[1];
-  }
-
-  return 0;
-};
-
-/**
  * Parse a given episode
  * @param  {String}  episode
  * @return {Object}
@@ -66,7 +39,7 @@ const parse = async episode => {
     const response = await fetch(url);
     const body = await response.text();
     const $ = cheerio.load(body);
-    const date = getDate($('.show__date'));
+    const date = getDate($('.show__date').text());
     const {domain} = parseDomain(SOURCE_SYNTAX_FM);
     const title = $('.showNotes h2').first().text();
     const objectID = uuidv5(url, uuidv5.URL);

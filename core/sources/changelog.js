@@ -1,34 +1,9 @@
-const chrono = require('chrono-node');
 const fetch = require('node-fetch');
+const {getDate, getIssue} = require('../utils');
 const Parser = require('rss-parser');
 const parseDomain = require('parse-domain');
 const {SOURCE_CHANGELOG} = require('../constants');
 const uuidv5 = require('uuid/v5');
-
-/**
- * Get date of the issue
- * @param  {Object} element
- * @return {String}
- */
-const getDate = date => {
-  return new Date(chrono.parseDate(date));
-};
-
-/**
- * Get issue number (episode number)
- * @param  {[type]} episode [description]
- * @return {[type]}         [description]
- */
-const getIssue = episode => {
-  const re = new RegExp(/podcast\/(\d+)/);
-  const matches = episode.match(re);
-
-  if (matches) {
-    return + matches[1];
-  }
-
-  return 0;
-};
 
 /**
  * Browse all campaigns

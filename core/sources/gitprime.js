@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
-const chrono = require('chrono-node');
 const fetch = require('node-fetch');
+const {getDate} = require('../utils');
 const parseDomain = require('parse-domain');
 const pLimit = require('p-limit');
 const pSettle = require('p-settle');
@@ -49,17 +49,6 @@ const getArchives = async () => {
 };
 
 /**
- * Get date of the issue
- * @param  {Object} element
- * @return {String}
- */
-const getDate = element => {
-  const date = chrono.parseDate(element.text());
-
-  return new Date(date);
-};
-
-/**
  * Parse a given issue number
  * @param  {Number}  issue
  * @return {Object}
@@ -69,7 +58,7 @@ const parse = async issue => {
     const response = await fetch(issue);
     const body = await response.text();
     const $ = cheerio.load(body);
-    const date = getDate($('.published'));
+    const date = getDate($('.published').text());
     const {domain} = parseDomain(SOURCE_GITPRIME);
 
     return $('.et_pb_text_inner h3').map((i, element) => {

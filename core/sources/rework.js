@@ -1,17 +1,8 @@
-const chrono = require('chrono-node');
 const fetch = require('node-fetch');
+const {getDate} = require('../utils');
 const Parser = require('rss-parser');
 const {SOURCE_REWORK} = require('../constants');
 const uuidv5 = require('uuid/v5');
-
-/**
- * Get date of the issue
- * @param  {Object} element
- * @return {String}
- */
-const getDate = date => {
-  return new Date(chrono.parseDate(date));
-};
 
 /**
  * Browse all campaigns

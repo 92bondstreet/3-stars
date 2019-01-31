@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
-const moment = require('moment');
+const {getDate} = require('../utils');
 const {SOURCE_THE_ENG_MAN} = require('../constants');
 const uuidv5 = require('uuid/v5');
 
@@ -28,7 +28,7 @@ module.exports.browse = async () => {
         objectID,
         title,
         url,
-        'date': moment(date, 'MM/DD/YYYY').toDate(),
+        'date': getDate(date),
         'domain': 'theengineeringmanager',
         'issue': nbCampaigns - i,
         'source': SOURCE_THE_ENG_MAN,
