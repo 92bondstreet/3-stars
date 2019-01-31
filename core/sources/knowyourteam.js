@@ -8,7 +8,13 @@ const pSettle = require('p-settle');
 const {P_LIMIT, SOURCE_KNOWYOURTEAM} = require('../constants');
 const uuidv5 = require('uuid/v5');
 
-const EXCLUDE = ['Transcript of the interview here'];
+const EXCLUDE = [
+  'here',
+  'Know Your Team',
+  'The Watercooler',
+  'Transcript of the interview here',
+  'Transcript of the interview is here.'
+];
 
 /**
  * Try to guess date based on published youtube video date

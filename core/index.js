@@ -1,13 +1,12 @@
 const getIndex = require('./get-index');
-const sources = require('require-all')(`${__dirname}/sources`);
 
-module.exports.browse = async () => {
+module.exports.browse = async sources => {
   try {
     let foods = [];
 
     // concurrency doesn't matter
     // we can make calls in serie
-    for (let source of Object.values(sources)) {
+    for (let source of sources) {
       const results = await source.browse();
 
       foods = foods.concat(results);

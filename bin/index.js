@@ -1,8 +1,14 @@
 const {browse, save} = require('../core/index');
+const core = require('require-all')(`${__dirname}/../core/sources`);
 
-async function bin () {
+/**
+ * Brower and index
+ * @param  {Array} sites
+ */
+async function bin (sites) {
   try {
-    const foods = await browse();
+    const sources = sites.map(site => core[site]);
+    const foods = await browse(sources);
 
     console.log(`🌱 indexing ${foods.length} foods...`);
 
@@ -15,4 +21,19 @@ async function bin () {
   }
 }
 
-bin();
+const argv = module.exports = require('yargs')
+  .usage('usage: 3-stars -s=<sources>')
+  .option('sources', {
+    'alias': 's',
+    'default': Object.keys(core),
+    'demand': false,
+    'description': 'list site sources to parse and index',
+    'type': 'array'
+  })
+  .strict()
+  .locale('en')
+  .wrap(120)
+  .help('help')
+  .argv;
+
+bin(argv.sources);
