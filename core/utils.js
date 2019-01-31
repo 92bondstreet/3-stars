@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
 const chrono = require('chrono-node');
 const fetch = require('node-fetch');
+const Parser = require('rss-parser');
 const uuidv5 = require('uuid/v5');
 
 /**
@@ -61,6 +62,25 @@ module.exports.mailchimp = async ({source, domain}) => {
         'type': 'newsletter'
       };
     }).get();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+/**
+ * Get rss feeds
+ * @param  {String}  source
+ * @return {Array}
+ */
+module.exports.rss = async source => {
+  try {
+    const parser = new Parser();
+    const response = await fetch(source);
+    const rss = await response.text();
+    const feed = await parser.parseString(rss);
+
+    return feed.items;
   } catch (error) {
     console.error(error);
     return [];

@@ -1,6 +1,4 @@
-const fetch = require('node-fetch');
-const {getDate} = require('../utils');
-const Parser = require('rss-parser');
+const {getDate, rss} = require('../utils');
 const {SOURCE_REWORK} = require('../constants');
 const uuidv5 = require('uuid/v5');
 
@@ -11,13 +9,10 @@ const uuidv5 = require('uuid/v5');
 module.exports.browse = async () => {
   console.log('fetching rss feeds...');
   try {
-    const parser = new Parser();
-    const response = await fetch(SOURCE_REWORK);
-    const rss = await response.text();
-    const feed = await parser.parseString(rss);
+    const items = await rss(SOURCE_REWORK);
     const domain = 'rework';
 
-    return feed.items.map(item => {
+    return items.map(item => {
       const {contentSnippet: tldr, enclosure, itunes, pubDate, title} = item; //eslint-disable-line
       const {url} = enclosure;
       const objectID = uuidv5(url, uuidv5.URL);
