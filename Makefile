@@ -1,9 +1,12 @@
 SHELL := /bin/bash
 
-.PHONY: dist
+.PHONY: dist sandbox
 
 parse: ## parse and index all posts with algolia
 	node bin/index.js
+
+sandbox: ## sandbox for client-side dev purpose
+	yarn start
 
 help: ## This help dialog.
 	@IFS=$$'\n' ; \

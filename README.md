@@ -20,6 +20,10 @@
 ❯ make parse
 ```
 
+### Start react app (based on [Algolia React InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) ) sandbox
+
+❯ make sandbox
+
 ## 🌱 Inspiration - deep dive reading
 
 * [Newsletters, Podcasts, Indie news... to feed my brain](https://github.com/92bondstreet/brain-food)
