@@ -2,6 +2,9 @@ SHELL := /bin/bash
 
 .PHONY: dist sandbox
 
+deploy: ## deploy with zeit
+	now
+
 parse: ## parse and index all posts with algolia
 	node bin/index.js
 

@@ -9,7 +9,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "now-build": "npm run build && mv build dist"
   },
   "devDependencies": {
     "babel-eslint": "9.0.0",

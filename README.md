@@ -22,7 +22,17 @@
 
 ### Start react app (based on [Algolia React InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) ) sandbox
 
+```sh
 ❯ make sandbox
+```
+
+## 🚀 Deploy
+
+![Deploy to Now](https://badgen.net/badge/%E2%96%B2%20Deploy%20to%20Now/$%20now%2092bondstreet%2F3-stars/black)
+
+```sh
+❯ make deploy
+```
 
 ## 🌱 Inspiration - deep dive reading
 
