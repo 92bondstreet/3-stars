@@ -518,5 +518,12 @@
 
     // Limit Maximum Number of Parameters
     "max-params": [2, 5]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    },
   }
 }

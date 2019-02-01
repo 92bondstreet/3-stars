@@ -1,0 +1,58 @@
+@import '../../vars.scss';
+
+.page {
+  padding: 0 15px;
+  max-width: 1035px;
+  @media screen and (max-width: 1439px) {
+    max-width: 630px;
+  }
+  margin: auto;
+  &>* {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mainContent {
+  flex-basis: 570px;
+  flex-grow: 1;
+}
+
+.extraContent {
+  flex-basis: 285px;
+  flex-grow: 1;
+  max-width: 400px;
+  @media screen and (max-width: 1439px) {
+    display: none;
+  }
+}
+
+.smallWidgetHeader {
+  padding-left: 25px;
+  padding-right: 20px;
+}
+
+.eventsWidget {
+  padding: 20px;
+  .eventText {
+    color: $textMain;
+  }
+}
+
+.suggestedPage {
+  padding-top: 60%;
+  @include backgroundCover();
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.suggestedCta {
+  border-top: $borderDefault;
+  text-align: center;
+  padding: 4px;
+  strong {
+    color: $textMain;
+  }
+}
