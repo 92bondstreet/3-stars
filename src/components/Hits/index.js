@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connectHits } from 'react-instantsearch-dom';
-import { UikContainerHorizontal, UikScrollArea, UikDivider } from '@uik';
 import HitsHeader from '../HitsHeader';
 import HitsWrapper from '../HitsWrapper';
+import { UikContainerHorizontal, UikScrollArea, UikDivider } from '@uik';
 
 import styles from './hits.module.scss';
 

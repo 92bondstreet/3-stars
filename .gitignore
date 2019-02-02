@@ -184,7 +184,6 @@ exports
 ### NYC ###
 coverage
 .nyc_output
-*.html
 *.cookies
 
 ### zeit ###
