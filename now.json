@@ -13,10 +13,14 @@
         {"src": "^/precache-manifest.(.*)", "dest": "/precache-manifest.$1"},
         {"src": "^/(.*)", "dest": "/index.html"}
     ],
+    "env": {
+      "NODE_PATH": "src"
+    },
     "build": {
       "env": {
         "REACT_APP_ALGOLIA_APPLICATION_ID": "@3-stars-algolia-application-id",
         "REACT_APP_ALGOLIA_API_KEY": "@3-stars-algolia-api-key"
       }
-    }
+    },
+    "files": [ "src/@uik" ],
 }

@@ -11,7 +11,12 @@ const Hits = connectHits(({ hits }) => (
     <UikScrollArea className={styles.mainContent}>
       {hits.map(hit => (
         <HitsWrapper key={hit.objectID}>
-          <HitsHeader date={hit.date} domain={hit.domain} title={hit.title} />
+          <HitsHeader
+            date={hit.date}
+            domain={hit.domain}
+            title={hit.title}
+            url={hit.url}
+          />
           <p>{hit.tldr}</p>
           <UikDivider />
         </HitsWrapper>

@@ -6,7 +6,7 @@ import { UikAvatar } from '@uik';
 
 import cls from './hits-header.module.scss';
 
-const HitsHeader = ({ date, domain, title }) => {
+const HitsHeader = ({ date, domain, title, url }) => {
   const avatar = AVATAR[domain] || {};
 
   return (
@@ -16,7 +16,11 @@ const HitsHeader = ({ date, domain, title }) => {
         avatarPlaceholder={{
           content: avatar.content,
         }}
-        name={<strong>{title}</strong>}
+        name={
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <strong>{title}</strong>
+          </a>
+        }
         textBottom={format(new Date(date), 'MMMM DD, YYYY')}
       />
     </div>
@@ -27,6 +31,7 @@ HitsHeader.propTypes = {
   date: PropTypes.string.isRequired,
   domain: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default HitsHeader;
