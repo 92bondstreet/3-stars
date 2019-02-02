@@ -14,6 +14,7 @@ const Hits = connectHits(({ hits }) => (
           <HitsHeader
             date={hit.date}
             domain={hit.domain}
+            source={hit.source}
             title={hit.title}
             type={hit.type}
             url={hit.url}

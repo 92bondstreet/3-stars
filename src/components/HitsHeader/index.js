@@ -5,16 +5,16 @@ import format from 'date-fns/format';
 import PropTypes from 'prop-types';
 import { UikAvatar } from '@uik';
 
-import cls from './hits-header.module.scss';
+import styles from './hits-header.module.scss';
 
-const HitsHeader = ({ date, domain, title, type, url }) => {
+const HitsHeader = ({ date, domain, source, title, type, url }) => {
   const avatar = AVATAR[domain] || {};
   const emoji = TYPE[type];
 
   return (
-    <div className={cls.wrapper}>
+    <div className={styles.wrapper}>
       <UikAvatar
-        className={cls[avatar.class || domain]}
+        className={styles[avatar.class || domain]}
         avatarPlaceholder={{
           content: avatar.content,
         }}
@@ -26,7 +26,16 @@ const HitsHeader = ({ date, domain, title, type, url }) => {
             </a>
           </React.Fragment>
         }
-        textBottom={format(new Date(date), 'MMMM DD, YYYY')}
+        textBottom={
+          <a
+            className={styles.source}
+            href={source}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {format(new Date(date), 'MMMM DD, YYYY')}
+          </a>
+        }
       />
     </div>
   );
@@ -35,6 +44,7 @@ const HitsHeader = ({ date, domain, title, type, url }) => {
 HitsHeader.propTypes = {
   date: PropTypes.string.isRequired,
   domain: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,

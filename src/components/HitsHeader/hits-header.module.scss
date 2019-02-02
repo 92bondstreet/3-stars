@@ -24,6 +24,10 @@
   white-space: initial;
 }
 
+a.source {
+  color: inherit;
+}
+
 .changelog {
   :global(.uik-avatar__avatarPlaceholder) {
     background-color: #4B0092 !important;
