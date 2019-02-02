@@ -2,7 +2,14 @@ SHELL := /bin/bash
 
 .PHONY: dist sandbox
 
+alias: ## alias to 3-stars.now.sh
+	now alias $(filter-out $@,$(MAKECMDGOALS)) 3-stars
+	now alias $(filter-out $@,$(MAKECMDGOALS)) 3stars
+	now alias $(filter-out $@,$(MAKECMDGOALS)) three-stars
+	now alias $(filter-out $@,$(MAKECMDGOALS)) threestars
+
 deploy: ## deploy with zeit
+	yarn run build
 	now
 
 parse: ## parse and index all posts with algolia

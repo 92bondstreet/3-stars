@@ -1,8 +1,3 @@
 *
-!public
-!public/
-!src
-!src/
-!src/@uik
-!package.json
-!now.json
+!build
+!build/
