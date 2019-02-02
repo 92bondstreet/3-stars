@@ -28,6 +28,15 @@ const AVATAR = {
   },
 };
 
-export {
-  AVATAR,
+const TYPE = {
+  newsletter: {
+    label: 'phone',
+    symbol: '📱',
+  },
+  podcast: {
+    label: 'studio microphone',
+    symbol: '🎙️',
+  },
 };
+
+export { AVATAR, TYPE };
