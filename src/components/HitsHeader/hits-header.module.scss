@@ -1,0 +1,97 @@
+@import '../../vars.scss';
+.wrapper {
+  margin: 20px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  a {
+    color: $textMain;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .text {
+    color: $textBase;
+  }
+}
+
+.avatar {
+  align-items: flex-start;
+}
+
+.nameText {
+  text-overflow: initial;
+  white-space: initial;
+}
+
+.changelog {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #4B0092 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.farnamstreet {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #DC3220 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.gitprime {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #005AB5 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.knowyourteam {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #E69F00 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.larahogan {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #D55E00 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.rework {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #009E73 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.softwareleadweekly {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #007FAA !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.syntax {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #8D6708 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
+.theengineeringmanager{
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #000000 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
