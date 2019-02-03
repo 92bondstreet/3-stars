@@ -11,6 +11,11 @@
 ❯ yarn
 ```
 
+## [Live demo](https://3-stars.now.sh/)
+
+![Photo of 3-stars](./web.png)
+
+
 ## 🕹️ Usage
 
 ### Parse all issues and index them into algolia
