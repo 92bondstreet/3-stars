@@ -13,7 +13,7 @@ module.exports.browse = async () => {
     const domain = 'rework';
 
     return items.map(item => {
-      const {contentSnippet: tldr, enclosure, itunes, pubDate, title} = item; //eslint-disable-line
+      const {enclosure, itunes, pubDate, title} = item; //eslint-disable-line
       const {url} = enclosure;
       const objectID = uuidv5(url, uuidv5.URL);
 
@@ -21,11 +21,11 @@ module.exports.browse = async () => {
         domain,
         objectID,
         title,
-        tldr,
         url,
         'date': getDate(pubDate),
         'issue': + (itunes.episode || 0),
         'source': SOURCE_REWORK,
+        'tldr': itunes.summary,
         'type': 'podcast'
       };
     });

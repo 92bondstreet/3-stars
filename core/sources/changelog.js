@@ -14,18 +14,18 @@ module.exports.browse = async () => {
     const {domain} = parseDomain(SOURCE_CHANGELOG);
 
     return items.map(item => {
-      const {contentSnippet: tldr, link: url, pubDate, title} = item; //eslint-disable-line
+      const {itunes, link: url, pubDate, title} = item; //eslint-disable-line
       const objectID = uuidv5(url, uuidv5.URL);
 
       return {
         domain,
         objectID,
         title,
-        tldr,
         url,
         'date': getDate(pubDate),
         'issue': getIssue(url),
         'source': SOURCE_CHANGELOG,
+        'tldr': itunes.summary,
         'type': 'podcast'
       };
     });
