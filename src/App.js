@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import Header from './components/Header';
 import Hits from './components/Hits';
-import { InstantSearch } from 'react-instantsearch-dom';
+import { Configure, InstantSearch } from 'react-instantsearch-dom';
 import { UikContainerVertical } from '@uik';
 import { ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY } from './constants';
 
@@ -17,6 +17,7 @@ class App extends Component {
     return (
       <div className={cls.app}>
         <InstantSearch searchClient={searchClient} indexName="threestars">
+          <Configure facets={['type']} />
           <UikContainerVertical>
             <Header />
             <Hits />

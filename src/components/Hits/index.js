@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { connectHits } from 'react-instantsearch-dom';
+import { connectHits, Stats } from 'react-instantsearch-dom';
 import HitsHeader from '../HitsHeader';
 import HitsWrapper from '../HitsWrapper';
-import { UikContainerHorizontal, UikScrollArea, UikDivider } from '@uik';
+import { UikContainerVertical, UikScrollArea, UikDivider } from '@uik';
+import HitsStats from '../HitsStats';
 
 import styles from './hits.module.scss';
 
 const Hits = connectHits(({ hits }) => (
-  <UikContainerHorizontal className={styles.page}>
+  <UikContainerVertical className={styles.page}>
     <UikScrollArea className={styles.mainContent}>
+      <HitsStats />
       {hits.map(hit => (
         <HitsWrapper key={hit.objectID}>
           <HitsHeader
@@ -24,7 +26,7 @@ const Hits = connectHits(({ hits }) => (
         </HitsWrapper>
       ))}
     </UikScrollArea>
-  </UikContainerHorizontal>
+  </UikContainerVertical>
 ));
 
 export default Hits;
