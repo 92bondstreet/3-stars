@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connectHits } from 'react-instantsearch-dom';
 import Header from './Header';
+import Highlight from './Highlight';
 import Stats from './Stats';
 import { UikContainerVertical, UikScrollArea, UikDivider } from '@uik';
 import Wrapper from './Wrapper';
@@ -21,7 +22,7 @@ const Hits = connectHits(({ hits }) => (
             type={hit.type}
             url={hit.url}
           />
-          <p>{hit.tldr}</p>
+          <Highlight hit={hit} attribute="tldr" />;
           <UikDivider />
         </Wrapper>
       ))}
