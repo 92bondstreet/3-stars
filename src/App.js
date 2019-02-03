@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import Header from './components/Header';
 import Hits from './components/Hits';
+import Sources from './components/Sources';
 import { Configure, InstantSearch } from 'react-instantsearch-dom';
-import { UikContainerVertical } from '@uik';
+
+import { UikContainerHorizontal, UikContainerVertical } from '@uik';
 import { ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY } from './constants';
 
 import cls from './App.module.scss';
@@ -20,7 +22,10 @@ class App extends Component {
           <Configure facets={['type']} />
           <UikContainerVertical>
             <Header />
-            <Hits />
+            <UikContainerHorizontal>
+              <Sources attribute="domain" />
+              <Hits />
+            </UikContainerHorizontal>
           </UikContainerVertical>
         </InstantSearch>
       </div>

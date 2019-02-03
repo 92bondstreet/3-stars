@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AVATAR, TYPE } from './constants';
+import { SOURCES, TYPES } from '../../constants';
 import Emoji from 'a11y-react-emoji';
 import format from 'date-fns/format';
 import PropTypes from 'prop-types';
@@ -8,8 +8,8 @@ import { UikAvatar } from '@uik';
 import styles from './header.module.scss';
 
 const Header = ({ date, domain, source, title, type, url }) => {
-  const avatar = AVATAR[domain] || {};
-  const emoji = TYPE[type];
+  const avatar = SOURCES[domain] || {};
+  const emoji = TYPES[type];
 
   return (
     <div className={styles.wrapper}>
