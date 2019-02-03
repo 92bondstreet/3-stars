@@ -5,9 +5,9 @@ import format from 'date-fns/format';
 import PropTypes from 'prop-types';
 import { UikAvatar } from '@uik';
 
-import styles from './hits-header.module.scss';
+import styles from './header.module.scss';
 
-const HitsHeader = ({ date, domain, source, title, type, url }) => {
+const Header = ({ date, domain, source, title, type, url }) => {
   const avatar = AVATAR[domain] || {};
   const emoji = TYPE[type];
 
@@ -41,7 +41,7 @@ const HitsHeader = ({ date, domain, source, title, type, url }) => {
   );
 };
 
-HitsHeader.propTypes = {
+Header.propTypes = {
   date: PropTypes.string.isRequired,
   domain: PropTypes.string.isRequired,
   source: PropTypes.string.isRequired,
@@ -50,4 +50,4 @@ HitsHeader.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default HitsHeader;
+export default Header;

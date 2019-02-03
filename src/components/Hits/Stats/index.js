@@ -3,7 +3,7 @@ import { connectStateResults } from 'react-instantsearch-dom';
 
 import { UikContentTitle, UikWidget } from '@uik';
 
-import styles from './hits-stats.module.scss';
+import styles from './stats.module.scss';
 
 /**
  * Get data from a facet name

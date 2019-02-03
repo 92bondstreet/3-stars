@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { connectHits, Stats } from 'react-instantsearch-dom';
-import HitsHeader from '../HitsHeader';
-import HitsWrapper from '../HitsWrapper';
+import { connectHits } from 'react-instantsearch-dom';
+import Header from './Header';
+import Stats from './Stats';
 import { UikContainerVertical, UikScrollArea, UikDivider } from '@uik';
-import HitsStats from '../HitsStats';
+import Wrapper from './Wrapper';
 
 import styles from './hits.module.scss';
 
 const Hits = connectHits(({ hits }) => (
   <UikContainerVertical className={styles.page}>
     <UikScrollArea className={styles.mainContent}>
-      <HitsStats />
+      <Stats />
       {hits.map(hit => (
-        <HitsWrapper key={hit.objectID}>
-          <HitsHeader
+        <Wrapper key={hit.objectID}>
+          <Header
             date={hit.date}
             domain={hit.domain}
             source={hit.source}
@@ -23,7 +23,7 @@ const Hits = connectHits(({ hits }) => (
           />
           <p>{hit.tldr}</p>
           <UikDivider />
-        </HitsWrapper>
+        </Wrapper>
       ))}
     </UikScrollArea>
   </UikContainerVertical>
