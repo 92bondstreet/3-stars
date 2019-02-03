@@ -32,11 +32,5 @@ const Sources = connectRefinementList(({ items, refine }) => (
     </UikNavSection>
   </UikNavPanel>
 ));
-/*
-const SocialNavigation = () => (
-
-)
-
-export default SocialNavigation*/
 
 export default Sources;

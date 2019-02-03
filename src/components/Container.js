@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Hits from './Hits';
+import orderBy from 'lodash.orderby';
 import Sources from './Sources';
 import classnames from 'classnames';
 import {
@@ -72,7 +73,12 @@ class Container extends React.PureComponent<{
             [styles[activeContent]]: activeContent,
           })}
         >
-          <Sources attribute="domain" />
+          <Sources
+            attribute="domain"
+            transformItems={items =>
+              orderBy(items, ['count', 'label'], ['desc', 'asc'])
+            }
+          />
           <div className={styles.content}>
             <Hits />
           </div>
