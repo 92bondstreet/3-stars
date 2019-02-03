@@ -22,7 +22,7 @@ const Hits = connectHits(({ hits }) => (
             type={hit.type}
             url={hit.url}
           />
-          <Highlight hit={hit} attribute="tldr" />;
+          <Highlight hit={hit} attribute="tldr" />
           <UikDivider />
         </Wrapper>
       ))}
