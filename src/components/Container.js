@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer';
 import Header from './Header';
 import Hits from './Hits';
 import orderBy from 'lodash.orderby';
@@ -10,6 +11,7 @@ import {
   UikContainerHorizontal,
   UikContainerVertical,
   Uikon,
+  UikNavPanel,
 } from '@uik';
 
 import styles from './container.module.scss';
@@ -73,12 +75,16 @@ class Container extends React.PureComponent<{
             [styles[activeContent]]: activeContent,
           })}
         >
-          <Sources
-            attribute="domain"
-            transformItems={items =>
-              orderBy(items, ['count', 'label'], ['desc', 'asc'])
-            }
-          />
+          <UikNavPanel>
+            <Sources
+              attribute="domain"
+              transformItems={items =>
+                orderBy(items, ['count', 'label'], ['desc', 'asc'])
+              }
+            />
+            <Footer />
+          </UikNavPanel>
+
           <div className={styles.content}>
             <Hits />
           </div>
