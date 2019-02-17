@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { connectRefinementList } from 'react-instantsearch-dom';
-
 import { UikNavSectionTitle, UikNavSection, UikNavLink } from '@uik';
 
-import { SOURCES } from './constants';
+import styles from './sources.module.scss';
+
+import { SOURCES } from '../constants';
 
 const Sources = connectRefinementList(({ items, refine }) => (
-  <UikNavSection>
+  <UikNavSection className={styles.sources}>
     <UikNavSectionTitle>The Sources</UikNavSectionTitle>
     {items.map(item => (
       <UikNavLink
