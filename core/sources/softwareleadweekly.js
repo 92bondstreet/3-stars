@@ -83,16 +83,21 @@ const parse = async issue => {
 
 /**
  * Browse all issues
+ * @param {Number} current
  * @return {Array}
  */
-module.exports.browse = async () => {
+module.exports.browse = async (current = 0) => {
   const limit = pLimit(P_LIMIT);
 
   // the first request allows us to get the latest issue
   console.log('fetching the first page to get the latest issue...');
   const latest = await getLatestIssue();
 
-  const promises = Array.from(new Array(latest), (val, index) => index + 1)
+  // then compute the range between the latest indexed
+  console.log(`computing the range between ${current} and ${latest}...`);
+  const range = latest - current;
+
+  const promises = Array.from(new Array(range), (val, index) => current + index + 1)
     .map(issue => {
       return limit(async () => {
         console.log(`parsing issue ${issue}/${latest}`);

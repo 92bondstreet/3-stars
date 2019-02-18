@@ -1,13 +1,15 @@
 /* eslint-disable no-console, no-process-exit */
-async function sandbox (source) {
+async function sandbox (source, current) {
   try {
     if (! source) {
       console.error('🔗 source not given');
       process.exit(1);
     }
 
+    console.log(`🕵️‍♀️  browsing source from issue ${current}`);
+
     const core = require(`../core/sources/${source}`);
-    const posts = await core.browse();
+    const posts = await core.browse(current);
 
     console.log(`${posts.length} posts found`);
     console.log(posts);
@@ -19,6 +21,6 @@ async function sandbox (source) {
   }
 }
 
-const [,, source] = process.argv;
+const [,, source, current = 0] = process.argv;
 
-sandbox(source);
+sandbox(source, + current);

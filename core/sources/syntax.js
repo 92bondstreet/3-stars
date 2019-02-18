@@ -65,7 +65,7 @@ const parse = async episode => {
  * Browse all issues
  * @return {Array}
  */
-module.exports.browse = async () => {
+module.exports.browse = async (current = 0) => {
   const limit = pLimit(P_LIMIT);
 
   // the first request allows us to get the latest issue
@@ -87,5 +87,5 @@ module.exports.browse = async () => {
   const isFulfilled = results.filter(result => result.isFulfilled).map(result => result.value);
   const posts = [].concat.apply([], isFulfilled);
 
-  return posts;
+  return posts.filter(item => item.issue > current);
 };

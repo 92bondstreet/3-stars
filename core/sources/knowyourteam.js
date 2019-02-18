@@ -13,7 +13,9 @@ const EXCLUDE = [
   'Know Your Team',
   'The Watercooler',
   'Transcript of the interview here',
-  'Transcript of the interview is here.'
+  'Transcript of the interview is here.',
+  'Listen to the podcast version here.',
+  'Read more here'
 ];
 
 /**
@@ -42,8 +44,10 @@ const getLatestIssue = async () => {
     const body = await response.text();
 
     const $ = cheerio.load(body);
-    const url = $('.issues-list li a').attr('href');
-    const re = new RegExp(/newsletter\/(\d+)/);
+    const url = $('.rt-detail .entry-title a').attr('href');
+
+    console.log(url);
+    const re = new RegExp(/newsletter-issue-(\d+)/);
     const matches = url.match(re);
 
     if (matches) {
@@ -77,7 +81,7 @@ const getChat = $ => {
  * @return {Object}
  */
 const getPosts = $ => {
-  return $('.article-content .soundcloud').nextAll('p').map((i, element) => {
+  return $('.article-content .youtube').nextAll('p').map((i, element) => {
     const aTag = $(element).find('a');
 
     if (aTag.length) {
@@ -136,14 +140,17 @@ const parse = async issue => {
  * Browse all issues
  * @return {Array}
  */
-module.exports.browse = async () => {
+module.exports.browse = async (current = 0) => {
   const limit = pLimit(P_LIMIT);
 
   // the first request allows us to get the latest issue
   console.log('fetching the first page to get the latest issue...');
   const latest = await getLatestIssue();
 
-  const promises = Array.from(new Array(latest), (val, index) => index + 1)
+  // then compute the range between the latest indexed
+  console.log(`computing the range between ${current} and ${latest}...`);
+  const range = latest - current;
+  const promises = Array.from(new Array(range), (val, index) => current + index + 1)
     .map(issue => {
       return limit(async () => {
         console.log(`parsing issue ${issue}/${latest}`);

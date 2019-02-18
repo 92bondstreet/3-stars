@@ -88,7 +88,7 @@ const parse = async issue => {
  * Browse all issues
  * @return {Array}
  */
-module.exports.browse = async () => {
+module.exports.browse = async (current = 0) => {
   const limit = pLimit(P_LIMIT);
 
   // the first request allows us to get the latest issue
@@ -101,7 +101,7 @@ module.exports.browse = async () => {
 
   const promises = archives.map((issue, index) => {
     return limit(async () => {
-      console.log(`parsing issue ${index + 1}/${latest}`);
+      console.log(`parsing archive ${index + 1}/${latest}`);
       return await parse(issue);
     });
   });
@@ -111,7 +111,10 @@ module.exports.browse = async () => {
   const posts = [].concat.apply([], isFulfilled);
 
   // add the issue number from oldest to newest
-  return posts.reverse().map((post, index) => {
-    return Object.assign({}, post, {'issue': index + 1});
-  });
+  return posts
+    .reverse()
+    .map((post, index) => {
+      return Object.assign({}, post, {'issue': index + 1});
+    })
+    .filter(item => item.issue > current);
 };

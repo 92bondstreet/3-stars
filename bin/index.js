@@ -1,4 +1,4 @@
-const {browse, save} = require('../core/index');
+const {browse, issues, save} = require('../core/index');
 const core = require('require-all')(`${__dirname}/../core/sources`);
 
 /**
@@ -7,7 +7,11 @@ const core = require('require-all')(`${__dirname}/../core/sources`);
  */
 async function bin (sites) {
   try {
-    const sources = sites.map(site => core[site]);
+    const currents = await issues();
+
+    console.log(`🔖 getting ${JSON.stringify(currents, null, 2)} as latest issue id for sources...`);
+
+    const sources = sites.map(site => Object.assign({}, {'current': currents[site]}, core[site]));
     const foods = await browse(sources);
 
     console.log(`🌱 indexing ${foods.length} foods...`);

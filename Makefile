@@ -13,7 +13,7 @@ deploy: ## deploy with zeit
 	now
 
 parse: ## parse and index all posts with algolia
-	node bin/index.js
+	node bin/index.js $(filter-out $@,$(MAKECMDGOALS))
 
 sandbox: ## sandbox for client-side dev purpose
 	yarn start
