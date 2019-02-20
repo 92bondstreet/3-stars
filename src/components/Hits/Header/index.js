@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SOURCES, TYPES } from '../../constants';
 import Emoji from 'a11y-react-emoji';
 import format from 'date-fns/format';
+import Latest from '../Latest';
 import PropTypes from 'prop-types';
 import { UikAvatar } from '@uik';
 
@@ -27,14 +28,17 @@ const Header = ({ date, domain, source, title, type, url }) => {
           </React.Fragment>
         }
         textBottom={
-          <a
-            className={styles.source}
-            href={source}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {format(new Date(date), 'MMMM DD, YYYY')}
-          </a>
+          <div className={styles.date}>
+            <a
+              className={styles.source}
+              href={source}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {format(new Date(date), 'MMMM DD, YYYY')}
+            </a>
+            <Latest date={date} />
+          </div>
         }
       />
     </div>

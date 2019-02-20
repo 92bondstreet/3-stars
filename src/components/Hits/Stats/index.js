@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connectStateResults } from 'react-instantsearch-dom';
-
+import Emoji from 'a11y-react-emoji';
 import { UikContentTitle, UikWidget } from '@uik';
 
 import styles from './stats.module.scss';
@@ -27,13 +27,17 @@ const Stats = connectStateResults(({ searchResults }) => {
         <div className={styles.box}>
           <UikContentTitle>Newsletter posts</UikContentTitle>
           <div className={styles.boxContent}>
-            <span className={styles.boxValue}>📱 {data.newsletter || 0}</span>
+            <span className={styles.boxValue}>
+              <Emoji symbol="📱" label="phone" /> {data.newsletter || 0}
+            </span>
           </div>
         </div>
         <div className={styles.box}>
           <UikContentTitle>Podcats</UikContentTitle>
           <div className={styles.boxContent}>
-            <span className={styles.boxValue}>🎙️ {data.podcast || 0}</span>
+            <span className={styles.boxValue}>
+              <Emoji symbol="🎙️" label="mic" /> {data.podcast || 0}
+            </span>
           </div>
         </div>
       </div>
