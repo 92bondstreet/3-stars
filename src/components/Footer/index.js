@@ -1,7 +1,12 @@
 import React from 'react';
+import { DATE } from '../constants';
 import Emoji from 'a11y-react-emoji';
+import format from 'date-fns/format';
+import setISODay from 'date-fns/set_iso_day';
 
 import styles from './footer.module.scss';
+
+const getNextSunday = () => format(setISODay(new Date(), 7), `ddd. ${DATE}`);
 
 const Header = () => (
   <div className={styles.aboutAppContainer}>
@@ -41,7 +46,7 @@ const Header = () => (
         .
       </span>
       <span>
-        <Emoji symbol="📅" label="Calendar" /> {new Date().getFullYear()}.
+        <Emoji symbol="📅" label="Calendar" /> Next update: {getNextSunday()}.
       </span>
     </div>
   </div>

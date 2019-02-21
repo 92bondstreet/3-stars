@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SOURCES, TYPES } from '../../constants';
+import { DATE, SOURCES, TYPES } from '../../constants';
 import Emoji from 'a11y-react-emoji';
 import format from 'date-fns/format';
 import Latest from '../Latest';
@@ -35,7 +35,7 @@ const Header = ({ date, domain, source, title, type, url }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {format(new Date(date), 'MMMM DD, YYYY')}
+              {format(new Date(date), DATE)}
             </a>
             <Latest date={date} />
           </div>

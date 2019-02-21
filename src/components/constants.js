@@ -57,4 +57,6 @@ const TYPES = {
   },
 };
 
-export { SOURCES, TYPES };
+const DATE = 'MMMM DD, YYYY';
+
+export { DATE, SOURCES, TYPES };
