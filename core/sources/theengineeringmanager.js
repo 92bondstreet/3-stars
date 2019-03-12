@@ -5,9 +5,7 @@ const {SOURCE_THE_ENG_MAN} = require('../constants');
  * Browse all campaigns
  * @return {Array}
  */
-module.exports.browse = async (current = 0) => {
+module.exports.browse = async () => {
   console.log('fetching all campaigns...');
-  const campaigns = await mailchimp({'domain': 'theengineeringmanager', 'source': SOURCE_THE_ENG_MAN});
-
-  return campaigns.filter(item => item.issue > current);
+  return await mailchimp({'domain': 'theengineeringmanager', 'source': SOURCE_THE_ENG_MAN});
 };

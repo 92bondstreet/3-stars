@@ -1,6 +1,12 @@
 {
     "version": 2,
     "name": "3-stars",
+    "alias": [
+      "3-stars",
+      "3stars",
+      "three-stars",
+      "threestars"
+    ],
     "builds": [
         { "src": "build/**", "use": "@now/static" }
     ],
