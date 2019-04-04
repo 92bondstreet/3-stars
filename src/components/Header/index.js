@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Emoji from 'a11y-react-emoji';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import {
@@ -9,6 +10,8 @@ import {
   Uikon,
   UikInput,
 } from '@uik';
+
+import styles from './header.module.scss';
 
 const MySearchBox = connectSearchBox(({ currentRefinement, refine }) => (
   <UikInput
@@ -24,7 +27,10 @@ const MySearchBox = connectSearchBox(({ currentRefinement, refine }) => (
 const Header = () => (
   <UikTopBar>
     <UikTopBarSection>
-      <UikTopBarTitle>👩‍🍳 3-stars brain food</UikTopBarTitle>
+      <UikTopBarTitle>
+        <Emoji symbol="👩‍🍳 " label="Chef" className={styles.emoji} /> 3-stars
+        brain food
+      </UikTopBarTitle>
       <UikTopBarMenuDivider />
       <MySearchBox />
     </UikTopBarSection>
