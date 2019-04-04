@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { Configure, InstantSearch } from 'react-instantsearch-dom';
 import '@uik/styles.css'; //eslint-disable-line
-import './algolia.scss';
+import '@uik/index.scss'; //eslint-disable-line
 import styles from './app.module.scss';
 import Container from './components/Container';
 import { ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY } from './constants';
