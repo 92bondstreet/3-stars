@@ -10,8 +10,7 @@ alias: ## alias to 3-stars.now.sh
 
 deploy: ## deploy with zeit
 	yarn run build
-	now
-	now alias
+	now --target production
 
 parse: ## parse and index all posts with algolia
 	node bin/index.js $(filter-out $@,$(MAKECMDGOALS))
