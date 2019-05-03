@@ -53,6 +53,14 @@ a.source {
  }
 }
 
+.humanemakers {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #00449e !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
 .knowyourteam {
   :global(.uik-avatar__avatarPlaceholder) {
     background-color: #E69F00 !important;
