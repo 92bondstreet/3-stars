@@ -14,6 +14,11 @@ const SOURCES = {
     emoji: '🌵',
     label: 'GitPrime',
   },
+  indiehackers: {
+    content: 'HCK',
+    emoji: '🦜',
+    label: 'Indie Hackers',
+  },
   humanemakers: {
     content: 'HMS',
     emoji: '🗿',

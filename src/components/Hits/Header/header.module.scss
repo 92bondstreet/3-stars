@@ -53,6 +53,14 @@ a.source {
  }
 }
 
+.indiehackers {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #1f364d !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
 .humanemakers {
   :global(.uik-avatar__avatarPlaceholder) {
     background-color: #00449e !important;
