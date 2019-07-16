@@ -78,6 +78,7 @@ class Container extends React.PureComponent<{
           <UikNavPanel>
             <Sources
               attribute="domain"
+              limit="50"
               transformItems={items =>
                 orderBy(items, ['count', 'label'], ['desc', 'asc'])
               }
