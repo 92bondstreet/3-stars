@@ -84,6 +84,10 @@ module.exports.browse = async (current = 0) => {
   console.log(`computing the range between ${current} and ${latest}...`);
   const range = latest - current;
 
+  if (range < 0) {
+    return [];
+  }
+
   const promises = Array.from(new Array(range), (val, index) => current + index + 1)
     .map(issue => {
       return limit(async () => {

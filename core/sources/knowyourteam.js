@@ -15,7 +15,12 @@ const EXCLUDE = [
   'Transcript of the interview here',
   'Transcript of the interview is here.',
   'Listen to the podcast version here.',
-  'Read more here'
+  'Read more here',
+  'Watch the video here.',
+  'Listen to the podcast here.',
+  'Read the transcript here.',
+  'Register for free here',
+  'it’d mean the world to me if you wrote us a review on iTunes'
 ];
 
 /**
@@ -30,6 +35,7 @@ const guessDate = async youtube => {
 
     return getDate(await video.datePublished);
   } catch (error) {
+    console.log(error);
     return null;
   }
 };

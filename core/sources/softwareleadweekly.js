@@ -39,10 +39,14 @@ const getLatestIssue = async () => {
  * @return {String}
  */
 const getSnippet = ($, element) => {
-  const contents = $(element).parent().contents();
+  const contents = $(element)
+    .parent()
+    .contents();
   const index = contents.get().findIndex(item => $(item).is(element));
 
-  return $(contents[index + 5]).text().trim();
+  return $(contents[index + 6])
+    .text()
+    .trim();
 };
 
 /**
@@ -53,28 +57,38 @@ const getSnippet = ($, element) => {
 const parse = async issue => {
   try {
     const source = `${SOURCE_SWLW}/issues/${issue}`;
-    const response = await fetch(source);
+    const response = await fetch(source, {
+      'headers': {
+        'upgrade-insecure-requests': '1'
+      },
+      'referrerPolicy': 'no-referrer-when-downgrade',
+      'body': null,
+      'method': 'GET',
+      'mode': 'cors'
+    });
     const body = await response.text();
     const $ = cheerio.load(body);
     const date = getDate($('.sub-header-text span').text());
     const {domain} = parseDomain(SOURCE_SWLW);
 
-    return $('.post_title').map((i, element) => {
-      const url = $(element).attr('href');
-      const objectID = uuidv5(url, uuidv5.URL);
+    return $('.post-title')
+      .map((i, element) => {
+        const url = $(element).attr('href');
+        const objectID = uuidv5(url, uuidv5.URL);
 
-      return {
-        date,
-        domain,
-        issue,
-        objectID,
-        source,
-        url,
-        'title': $(element).text(),
-        'tldr': getSnippet($, element),
-        'type': 'newsletter'
-      };
-    }).get();
+        return {
+          date,
+          domain,
+          issue,
+          objectID,
+          source,
+          url,
+          'title': $(element).text(),
+          'tldr': getSnippet($, element),
+          'type': 'newsletter'
+        };
+      })
+      .get();
   } catch (error) {
     console.error(error);
     return [];
@@ -97,16 +111,20 @@ module.exports.browse = async (current = 0) => {
   console.log(`computing the range between ${current} and ${latest}...`);
   const range = latest - current;
 
-  const promises = Array.from(new Array(range), (val, index) => current + index + 1)
-    .map(issue => {
-      return limit(async () => {
-        console.log(`parsing issue ${issue}/${latest}`);
-        return await parse(issue);
-      });
+  const promises = Array.from(
+    new Array(range),
+    (val, index) => current + index + 1
+  ).map(issue => {
+    return limit(async () => {
+      console.log(`parsing issue ${issue}/${latest}`);
+      return await parse(issue);
     });
+  });
 
   const results = await pSettle(promises);
-  const isFulfilled = results.filter(result => result.isFulfilled).map(result => result.value);
+  const isFulfilled = results
+    .filter(result => result.isFulfilled)
+    .map(result => result.value);
   const posts = [].concat.apply([], isFulfilled);
 
   return posts;
