@@ -36,7 +36,7 @@
     "date-fns": "^1.30.1",
     "dotenv": "^6.2.0",
     "lodash.orderby": "^4.6.0",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.11.0",
     "p-limit": "^2.1.0",
     "p-settle": "^2.1.0",
