@@ -16,12 +16,12 @@ const Sources = connectRefinementList(({ items, refine }) => (
           event.preventDefault();
           refine(item.value);
         }}
-        icon={SOURCES[item.label] && SOURCES[item.label].emoji || '🚀'}
+        icon={(SOURCES[item.label] && SOURCES[item.label].emoji) || '🚀'}
         key={item.label}
         highlighted={item.isRefined}
         rightEl={item.count}
       >
-        {SOURCES[item.label] && SOURCES[item.label].label || item.label}
+        {(SOURCES[item.label] && SOURCES[item.label].label) || item.label}
       </UikNavLink>
     ))}
   </UikNavSection>

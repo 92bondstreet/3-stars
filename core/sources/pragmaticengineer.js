@@ -64,6 +64,7 @@ const parse = async (post, issue) => {
       'date': getDate($('meta[property="article:published_time"]').attr('content')),
       'objectID': uuidv5(post, uuidv5.URL),
       'url': post,
+      'source': SOURCE_PRAGMENGINEER,
       'title': $('meta[property="og:title"]').attr('content'),
       'tldr': $('meta[property="og:description"]').attr('content'),
       'type': 'newsletter'
