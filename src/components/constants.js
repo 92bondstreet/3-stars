@@ -34,6 +34,11 @@ const SOURCES = {
     emoji: '🌈',
     label: 'Lara Hogan',
   },
+  pragmaticengineer: {
+    content: 'TPE',
+    emoji: '🙏🏽',
+    label: 'The Pragmatic Engineer',
+  },
   rework: {
     content: 'REW',
     emoji: '🍉',

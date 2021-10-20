@@ -85,6 +85,14 @@ a.source {
  }
 }
 
+.pragmaticengineer {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #D55E00 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
 .rework {
   :global(.uik-avatar__avatarPlaceholder) {
     background-color: #009E73 !important;
