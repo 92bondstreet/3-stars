@@ -34,6 +34,11 @@ const SOURCES = {
     emoji: '🌈',
     label: 'Lara Hogan',
   },
+  lethain: {
+    content: 'WIL',
+    emoji: '📓',
+    label: 'Will Larson',
+  },
   pragmaticengineer: {
     content: 'TPE',
     emoji: '🙏🏽',

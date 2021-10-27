@@ -85,6 +85,14 @@ a.source {
  }
 }
 
+.lethain {
+  :global(.uik-avatar__avatarPlaceholder) {
+    background-color: #555 !important;
+    color: white !important;
+    border-color: transparent !important;
+ }
+}
+
 .pragmaticengineer {
   :global(.uik-avatar__avatarPlaceholder) {
     background-color: #2E2E2E !important;

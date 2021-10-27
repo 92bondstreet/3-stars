@@ -82,7 +82,11 @@ class Container extends React.PureComponent<{
               transformItems={items =>
                 orderBy(items, ['count', 'label'], ['desc', 'asc'])
               }
-              defaultRefinement={['softwareleadweekly', 'pragmaticengineer']}
+              defaultRefinement={[
+                'softwareleadweekly',
+                'lethain',
+                'pragmaticengineer',
+              ]}
             />
             <Footer />
           </UikNavPanel>
