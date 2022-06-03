@@ -3,7 +3,7 @@ const {ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY} = require('./constants');
 
 let index = null;
 
-module.exports = async (key = ALGOLIA_API_KEY) => {
+module.exports = async (algindex = 'threestars', key = ALGOLIA_API_KEY) => {
   if (index) {
     return index;
   }
@@ -11,7 +11,7 @@ module.exports = async (key = ALGOLIA_API_KEY) => {
   try {
     const client = algoliasearch(ALGOLIA_APPLICATION_ID, key);
 
-    return client.initIndex('threestars');
+    return client.initIndex(algindex);
   } catch (error) {
     console.log(error);
     return {};

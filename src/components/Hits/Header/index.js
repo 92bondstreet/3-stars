@@ -17,7 +17,7 @@ const Header = ({ date, domain, source, title, type, url }) => {
       <UikAvatar
         className={styles[avatar.class || domain]}
         avatarPlaceholder={{
-          content: avatar.content,
+          content: avatar.content || domain.substring(0, 3),
         }}
         name={
           <React.Fragment>

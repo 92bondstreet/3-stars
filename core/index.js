@@ -23,10 +23,10 @@ module.exports.browse = async sources => {
  * @param  {[type]}  foods [description]
  * @return {Promise}       [description]
  */
-module.exports.save = async foods => {
+module.exports.save = async (foods, index) => {
   try {
-    const index = await getIndex();
-    const content = await index.addObjects(foods);
+    const client = await getIndex(index);
+    const content = await client.addObjects(foods);
 
     return content;
   } catch (error) {
