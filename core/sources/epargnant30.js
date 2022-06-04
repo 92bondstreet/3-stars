@@ -1,7 +1,7 @@
-const {SOURCE_LEBLOGPATRIMOINE} = require('../constants');
+const {SOURCE_EPARGNANT30} = require('../constants');
 const feed = require('../feed');
 
-const LAST_PAGE = 50;
+const LAST_PAGE = 10;
 
 /**
  * Browse all pages
@@ -9,5 +9,5 @@ const LAST_PAGE = 50;
  */
 module.exports.browse = async (latest = LAST_PAGE) => {
   console.log(`fetching first ${LAST_PAGE} pages...`);
-  return await feed.browse(SOURCE_LEBLOGPATRIMOINE, latest);
+  return await feed.browse(SOURCE_EPARGNANT30, latest);
 };

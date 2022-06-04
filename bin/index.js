@@ -7,7 +7,7 @@ const core = require('require-all')(`${__dirname}/../core/sources`);
  */
 async function bin (sites, index) {
   try {
-    const currents = await issues();
+    const currents = await issues(index);
 
     console.log(`🔖 getting ${JSON.stringify(currents, null, 2)} as latest issue id for sources...`);
 

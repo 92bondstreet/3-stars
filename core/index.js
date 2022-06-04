@@ -40,10 +40,10 @@ module.exports.save = async (foods, index) => {
  * (the current one)
  * @return {Object}
  */
-module.exports.issues = async () => {
+module.exports.issues = async (index) => {
   try {
-    const index = await getIndex();
-    const {hits} = await index.search('', {'distinct': true});
+    const client = await getIndex(index);
+    const {hits} = await client.search('', {'distinct': true});
 
     return hits
       .map(({domain, issue}) => ({domain, issue}))
