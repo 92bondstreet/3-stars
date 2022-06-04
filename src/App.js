@@ -31,7 +31,7 @@ class App extends Component {
       <div className={styles.app}>
         <InstantSearch searchClient={searchClient} indexName={index}>
           <Configure facets={['type']} />
-          <Container />
+          <Container indexName={index} />
         </InstantSearch>
       </div>
     );

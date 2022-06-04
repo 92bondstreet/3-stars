@@ -4,7 +4,7 @@ SHELL := /bin/bash
 
 deploy: ## deploy with zeit
 	yarn run build
-	now --target production
+	vercel build --prod
 
 parse: ## parse and index all posts with algolia
 	node bin/index.js $(filter-out $@,$(MAKECMDGOALS))

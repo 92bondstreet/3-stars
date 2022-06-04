@@ -52,6 +52,11 @@ class Container extends React.PureComponent<{
 
   render() {
     const { activeContent } = this.state;
+    const { indexName } = this.props;
+    const defaultRefinement =
+      indexName === 'threestars'
+        ? ['softwareleadweekly', 'lethain', 'pragmaticengineer']
+        : [];
 
     return (
       <UikContainerVertical>
@@ -82,7 +87,7 @@ class Container extends React.PureComponent<{
               transformItems={items =>
                 orderBy(items, ['count', 'label'], ['desc', 'asc'])
               }
-
+              defaultRefinement={defaultRefinement}
             />
             <Footer />
           </UikNavPanel>
